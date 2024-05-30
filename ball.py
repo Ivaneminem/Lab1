@@ -13,3 +13,6 @@ class Ball:
     def move(self):
         self.rect.x += self.speed * self.dx
         self.rect.y += self.speed * self.dy
+
+    def draw(self, surface):
+        pygame.draw.circle(surface, pygame.Color('white'), self.rect.center, BALL_RADIUS)

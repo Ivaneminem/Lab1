@@ -6,3 +6,7 @@ class Block:
     def __init__(self, rows, cols):
         self.blocks = [pygame.Rect(10 + 120 * i, 10 + 70 * j, BLOCK_WIDTH, BLOCK_HEIGHT) for i in range(cols) for j in range(rows)]
         self.colors = [(rnd(30, 256), rnd(30, 256), rnd(30, 256)) for _ in range(cols * rows)]
+
+    def draw(self, surface):
+        for color, block in zip(self.colors, self.blocks):
+            pygame.draw.rect(surface, color, block)

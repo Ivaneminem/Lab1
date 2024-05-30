@@ -37,4 +37,8 @@ def main_menu():
                     Game('hard').run()
                     return
 
-
+if __name__ == "__main__":
+    if not os.path.exists(SCORE_FILE):
+        open(SCORE_FILE, 'w').close()
+    main_menu()
+    pygame.quit()

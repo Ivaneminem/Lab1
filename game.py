@@ -25,3 +25,7 @@ class Game:
         self.block = Block(self.block_rows, self.block_cols)
         self.fps = FPS
         self.score = 0
+
+    def save_score(self):
+        with open(SCORE_FILE, 'a') as file:
+            file.write(f'Score: {self.score}\n')

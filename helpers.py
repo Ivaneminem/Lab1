@@ -26,3 +26,11 @@ def draw_text(surface, text, size, x, y):
     text_rect = text_surface.get_rect()
     text_rect.midtop = (x, y)
     surface.blit(text_surface, text_rect)
+
+def get_highest_score():
+    if not os.path.exists(SCORE_FILE):
+        return 0
+    with open(SCORE_FILE, 'r') as file:
+        scores = file.readlines()
+        scores = [int(score.strip().split()[-1]) for score in scores if score.strip()]
+        return max(scores) if scores else 0

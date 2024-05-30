@@ -10,3 +10,6 @@ class Paddle:
             self.rect.left -= PADDLE_SPEED
         if right and self.rect.right < WIDTH:
             self.rect.right += PADDLE_SPEED
+
+    def draw(self, surface):
+        pygame.draw.rect(surface, pygame.Color('darkorange'), self.rect)

@@ -65,3 +65,24 @@ class Game:
             draw_text(sc, f"Score: {self.score}", 24, WIDTH - 100, 10)
             pygame.display.flip()
             clock.tick(self.fps)
+
+    def end_screen(self, message):
+        while True:
+            sc.blit(img, (0, 0))
+            draw_text(sc, message, 64, WIDTH / 2, HEIGHT / 2 - 100)
+            draw_text(sc, f"Score: {self.score}", 32, WIDTH / 2, HEIGHT / 2)
+            draw_text(sc, "Press M for Main Menu or Q to Quit", 24, WIDTH / 2, HEIGHT / 2 + 100)
+            pygame.display.flip()
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_q:
+                        pygame.quit()
+                        exit()
+                    if event.key == pygame.K_m:
+                        from main import main_menu
+                        main_menu()
+                        return

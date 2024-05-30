@@ -10,3 +10,18 @@ clock = pygame.time.Clock()
 img = pygame.image.load(IMG_PATH).convert()
 
 class Game:
+    def __init__(self, difficulty):
+        if difficulty == 'easy':
+            self.ball_speed = EASY_BALL_SPEED
+            self.block_rows = EASY_BLOCK_ROWS
+            self.block_cols = EASY_BLOCK_COLS
+        else:
+            self.ball_speed = HARD_BALL_SPEED
+            self.block_rows = HARD_BLOCK_ROWS
+            self.block_cols = HARD_BLOCK_COLS
+
+        self.paddle = Paddle()
+        self.ball = Ball(self.ball_speed)
+        self.block = Block(self.block_rows, self.block_cols)
+        self.fps = FPS
+        self.score = 0

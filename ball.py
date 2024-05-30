@@ -9,3 +9,7 @@ class Ball:
         self.rect = pygame.Rect(rnd(ball_diameter, WIDTH - ball_diameter), HEIGHT // 2, ball_diameter, ball_diameter)
         self.dx, self.dy = 1, -1
         self.speed = speed
+
+    def move(self):
+        self.rect.x += self.speed * self.dx
+        self.rect.y += self.speed * self.dy

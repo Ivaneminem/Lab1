@@ -29,3 +29,39 @@ class Game:
     def save_score(self):
         with open(SCORE_FILE, 'a') as file:
             file.write(f'Score: {self.score}\n')
+
+    def run(self):
+        running = True
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+
+            sc.blit(img, (0, 0))
+
+            keys = pygame.key.get_pressed()
+            self.paddle.move(keys[pygame.K_LEFT], keys[pygame.K_RIGHT])
+
+            self.ball.move()
+            hit_block, hit_color = self.ball.check_collision(self.paddle, self.block.blocks, self.block.colors)
+            if hit_block:
+                self.fps += 2
+                self.score += 1
+                pygame.draw.rect(sc, hit_color, hit_block)
+
+            self.paddle.draw(sc)
+            self.ball.draw(sc)
+            self.block.draw(sc)
+
+            if self.ball.rect.bottom > HEIGHT:
+                self.save_score()
+                self.end_screen("GAME OVER")
+                running = False
+            elif not self.block.blocks:
+                self.save_score()
+                self.end_screen("WIN!!!")
+                running = False
+
+            draw_text(sc, f"Score: {self.score}", 24, WIDTH - 100, 10)
+            pygame.display.flip()
+            clock.tick(self.fps)

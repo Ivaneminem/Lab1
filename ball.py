@@ -3,6 +3,7 @@ from random import randrange as rnd
 from helpers import detect_collision
 from config import WIDTH, HEIGHT, BALL_RADIUS
 
+
 class Ball:
     def __init__(self, speed):
         ball_diameter = int(BALL_RADIUS * 2 ** 0.5)
@@ -23,7 +24,7 @@ class Ball:
         if self.rect.centery < BALL_RADIUS:
             self.dy = -self.dy
 
-        if self.rect.colliderect(paddle.rect) and self.dy > 0:
+        if paddle and self.rect.colliderect(paddle.rect) and self.dy > 0:  # Перевірка чи paddle не є None
             self.dx, self.dy = detect_collision(self.dx, self.dy, self.rect, paddle.rect)
 
         hit_index = self.rect.collidelist(blocks)

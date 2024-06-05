@@ -3,15 +3,18 @@ import os
 from game import Game
 from helpers import draw_text, get_highest_score
 
+
 # Constants
 WIDTH, HEIGHT = 1200, 800
 IMG_PATH = '1.jpg'
 SCORE_FILE = 'scores.txt'
 
+
 # Initialize pygame
 pygame.init()
 sc = pygame.display.set_mode((WIDTH, HEIGHT))
 img = pygame.image.load(IMG_PATH).convert()
+
 
 def main_menu():
     highest_score = get_highest_score()
@@ -36,6 +39,7 @@ def main_menu():
                 if event.key == pygame.K_2:
                     Game('hard').run()
                     return
+
 
 if __name__ == "__main__":
     if not os.path.exists(SCORE_FILE):

@@ -5,9 +5,11 @@ from block import Block
 from helpers import draw_text
 from config import WIDTH, HEIGHT, IMG_PATH, SCORE_FILE, FPS, EASY_BALL_SPEED, HARD_BALL_SPEED, EASY_BLOCK_ROWS, EASY_BLOCK_COLS, HARD_BLOCK_ROWS, HARD_BLOCK_COLS
 
+
 sc = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
 img = pygame.image.load(IMG_PATH).convert()
+
 
 class Game:
     def __init__(self, difficulty):
@@ -26,8 +28,8 @@ class Game:
         self.fps = FPS
         self.score = 0
 
-    def save_score(self):
-        with open(SCORE_FILE, 'a') as file:
+    def save_score(self, score_file=SCORE_FILE):
+        with open(score_file, 'a') as file:
             file.write(f'Score: {self.score}\n')
 
     def run(self):

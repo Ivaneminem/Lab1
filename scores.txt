@@ -17,3 +17,7 @@ Score: 10
 Score: 10
 Score: 10
 Score: 15
+Score: 8
+Score: 1
+Score: 11
+Score: 1

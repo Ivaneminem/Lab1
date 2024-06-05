@@ -25,20 +25,23 @@ def main_menu():
         draw_text(sc, "Press 1 for Easy, 2 for Hard, or Q to Quit", 24, WIDTH / 2, HEIGHT / 2 + 50)
         pygame.display.flip()
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                exit()
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_q:
+        try:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
                     pygame.quit()
                     exit()
-                if event.key == pygame.K_1:
-                    Game('easy').run()
-                    return
-                if event.key == pygame.K_2:
-                    Game('hard').run()
-                    return
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_q:
+                        pygame.quit()
+                        exit()
+                    if event.key == pygame.K_1:
+                        Game('easy').run()
+                        return
+                    if event.key == pygame.K_2:
+                        Game('hard').run()
+                        return
+        except Exception as e:
+            print(f"Error processing events: {e}")
 
 
 if __name__ == "__main__":
